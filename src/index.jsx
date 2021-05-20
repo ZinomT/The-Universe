@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import Ruler from './components/Ruler.jsx';
 import styled from 'styled-components';
 import img from './img/right.svg';
+import Tracker from './components/Tracker.jsx';
 
 
 // function importAll(r) {
@@ -17,19 +18,21 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      repos: []
+      currentKilo: 0,
     }
 
   }
   componentDidMount() {
-    console.log('dont say hello')
+    console.log('w')
   }
+
 
 
   render () {
     return (
     <MainWrapper>
       <UniverseWrapperRow1>
+
         <TitleWrapper>
           <MainTitle>Our Solar System</MainTitle>
           <ScrollThatWay>
@@ -38,6 +41,7 @@ class App extends React.Component {
               <span>To scroll right, use shift + mousewheel. If you have a touchpad, swipe sideways.</span>
             </Instructions>
           </ScrollThatWay>
+          <Tracker/>
         </TitleWrapper>
         <Ruler/>
       </UniverseWrapperRow1>
@@ -76,6 +80,7 @@ const MainTitle = styled.div`
   margin-inline-start: 0px;
   margin-inline-end: 0px;
   font-weight: bold;
+  color: #FFF;
 `;
 
 const ScrollThatWay = styled.div`
@@ -88,11 +93,11 @@ const ScrollThatWay = styled.div`
   padding-top: 42px;
   padding-left: 48px;
   font-size: 30px;
-  color: #00000033;
+  color: #FFF;
   background-image: url(${img});
   background-repeat: no-repeat;
   background-size: 50%;
-  background-position: 50px 40px;
+  background-position: 50px 45px;
   /* animation-name: bouncy-arrow;
   animation-delay: 0;
   animation-iteration-count: infinite;
@@ -101,12 +106,16 @@ const ScrollThatWay = styled.div`
 `;
 
 const Instructions = styled.div`
-  transition: opacity 300ms;
   margin-top: 40px;
   max-width: 80%;
-  color: black;
-  font-size: 14px;
+  color: #FFF;
+  font-size: 20px;
 `;
 
+const Current = styled.div`
+  position: fixed;
+  top: 0px;
+  left: 10px;
+`;
 
 ReactDOM.render(<App />, document.getElementById('app'));
