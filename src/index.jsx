@@ -66,7 +66,7 @@ class App extends React.Component {
     <MainWrapper>
       <UniverseWrapperRow1>
         <TitleWrapper>
-          <MainTitle>Our Solar System</MainTitle>
+          <MainTitle>SOLAR</MainTitle>
           <Email>
           <form id="contact-form" onSubmit={this.handleSubmit.bind(this)} method="POST">
             <div className="form-group">

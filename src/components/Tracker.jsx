@@ -8,7 +8,7 @@ function Tracker({title , items = [], callback}) {
 
   return (
     <Current>
-    <p>{(scrollX * -1 < 2345) ? null : (((scrollX * -1) - 2345) * 100.00) + ' Kilometers'}</p>
+    <p>{(scrollX * -1 < 2345) ? null : (((scrollX * -1) - 2345) * 100.00) + ' Kilometers away from Earth.'}</p>
     </Current>
   )
 }
@@ -16,8 +16,10 @@ function Tracker({title , items = [], callback}) {
 
 const Current = styled.div`
   position: fixed;
-  top: 0px;
-  left: 50px;
+  top: -10px;
+  left: 30px;
+  font-size: 24px;
+  color: #FFF;
 `;
 
 
