@@ -7,9 +7,9 @@ class Ruler extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      term: ''
     }
   }
+
 
   render() {
     return (
@@ -111,5 +111,6 @@ const MoonToMarsFigure = styled.div`
   margin-top: 5px;
   opacity: 0%;
 `;
+
 
 export default Ruler;

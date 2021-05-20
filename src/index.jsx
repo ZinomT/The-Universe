@@ -18,23 +18,72 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      currentKilo: 0,
+      name: '',
+      email: '',
+      message: ''
     }
 
   }
   componentDidMount() {
-    console.log('w')
+    console.log('W')
   }
 
+  handleSubmit(e){
+    e.preventDefault();
+    // axios({
+    //   method: "POST",
+    //   url:"http://localhost:5000/send",
+    //   data:  this.state
+    // }).then((response)=>{
+    //   if (response.data.status === 'success') {
+    //     alert("Message Sent.");
+    //     this.resetForm()
+    //   } else if (response.data.status === 'fail') {
+    //     alert("Message failed to send.")
+    //   }
+    // })
+  }
+
+  resetForm(){
+    this.setState({name: '', email: '', message: ''})
+  }
+
+  onNameChange(event) {
+	  this.setState({name: event.target.value})
+  }
+
+  onEmailChange(event) {
+	  this.setState({email: event.target.value})
+  }
+
+  onMessageChange(event) {
+	  this.setState({message: event.target.value})
+  }
 
 
   render () {
     return (
     <MainWrapper>
       <UniverseWrapperRow1>
-
         <TitleWrapper>
           <MainTitle>Our Solar System</MainTitle>
+          <Email>
+          <form id="contact-form" onSubmit={this.handleSubmit.bind(this)} method="POST">
+            <div className="form-group">
+                <label htmlFor="name">Name</label>
+                <input type="text" className="form-control" id="name" value={this.state.name} onChange={this.onNameChange.bind(this)} />
+            </div>
+            <div className="form-group">
+                <label htmlFor="exampleInputEmail1">Email address</label>
+                <input type="email" className="form-control" id="email" aria-describedby="emailHelp" value={this.state.email} onChange={this.onEmailChange.bind(this)} />
+            </div>
+            <div className="form-group">
+                <label htmlFor="message">Message</label>
+                <textarea className="form-control" rows="5" id="message" value={this.state.message} onChange={this.onMessageChange.bind(this)} />
+            </div>
+            <button type="submit" className="btn btn-primary">Submit</button>
+          </form>
+          </Email>
           <ScrollThatWay>
             <span>Scroll Right</span>
             <Instructions>
@@ -54,9 +103,9 @@ class App extends React.Component {
 
 
 const MainWrapper = styled.div`
-  font-family: sans-serif;
-  overflow: visible;
-  display: inline-block;
+font-family: Lucida Bright,Georgia,serif;
+overflow: visible;
+display: inline-block;
 `;
 
 const UniverseWrapperRow1 = styled.div`
@@ -116,6 +165,15 @@ const Current = styled.div`
   position: fixed;
   top: 0px;
   left: 10px;
+`;
+
+const Email = styled.div`
+  bottom: 50px;
+  left: 40px;
+  width: 150px;
+  height: 165px;
+  position: absolute;
+  color: #FFF;
 `;
 
 ReactDOM.render(<App />, document.getElementById('app'));
